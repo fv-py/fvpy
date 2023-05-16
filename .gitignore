@@ -32,6 +32,18 @@ MANIFEST
 *.manifest
 *.spec
 
+# Mac OSX
+.DS_Store
+
+.vscode
+.idea
+.settings
+.pydevproject
+.project
+htmlcov
+MANIFEST
+
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
