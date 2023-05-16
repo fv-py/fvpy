@@ -1,2 +1,2 @@
 # fvpy
-A Python package for FITS overview
+The Python way of browsing through FITS files. 
