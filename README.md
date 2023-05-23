@@ -6,5 +6,3 @@ It is based on the following python packages :
  - astopy : for FITS files handling
  - PyQT6 : for GUI
  - matplotlib : for plotting
-
-test
