@@ -1,8 +1,6 @@
 [build-system]
 requires = [
 	"setuptools >= 40.6.0",
-	"wheel",
-	"Cython",
 	'oldest-supported-numpy',
 	'setuptools_scm[toml]',
 	"extension-helpers",
@@ -24,13 +22,5 @@ exclude = '''
   | _build
   | buck-out
   | build
-  | gammapy/extern
 )/
 '''
-
-[tool.pytest.ini_options]
-filterwarnings = [
-    "error::astropy.utils.exceptions.AstropyDeprecationWarning",
-    "error::gammapy.utils.deprecation.GammapyDeprecationWarning",
-    "error::matplotlib.MatplotlibDeprecationWarning",
-]
