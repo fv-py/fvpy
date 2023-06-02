@@ -1,0 +1,35 @@
+# Conda environment for fvpy development.
+#
+# Install:    conda env create -f environment-dev.yml
+# update:     conda env update -f environment-dev.yml
+# Activate:   conda activate fvpy-dev
+# Deactivate: conda deactivate
+
+name: fvpy-dev
+
+channels:
+  - conda-forge
+
+dependencies:
+  # core dependencies
+  - python=3.9
+  - pip
+  - astropy
+  - numpy>=1.20
+  - matplotlib>=3.4
+  - extension-helpers
+  - pip:
+      - PyQt6
+  # extra dependencies
+  - ipython
+  - jupyter
+  - jupyterlab
+  - pandas
+  - healpy
+  # dev dependencies
+  - black
+  - flake8
+  - isort
+  - codespell
+  - pre-commit
+  - setuptools_scm
