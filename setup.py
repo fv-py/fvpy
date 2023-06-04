@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 from extension_helpers import get_extensions
 from setuptools import setup
