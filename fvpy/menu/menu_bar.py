@@ -1,7 +1,7 @@
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QAction, QMenu, QMenuBar
 
-__all__ = ["MenuBar", "FileMenu"]
+__all__ = ["MenuBar", "FileMenu", "ViewMenu", "FvPyMenu"]
 
 
 class MenuBar(QMenuBar):
@@ -12,12 +12,35 @@ class MenuBar(QMenuBar):
 
         self.main_window = main_window
 
+        self.fvpy_menu = FvPyMenu(main_window=self.main_window)
+        self.addMenu(self.fvpy_menu)
+
         self.file_menu = FileMenu(main_window=self.main_window)
         self.addMenu(self.file_menu)
+
         self.edit_menu = self.addMenu("Edit")
+
         self.view_menu = ViewMenu(main_window=self.main_window)
         self.addMenu(self.view_menu)
+
         self.help_menu = self.addMenu("Help")
+
+
+class FvPyMenu(QMenu):
+    """FvPy menu for the main window."""
+
+    def __init__(self, parent=None, main_window=None):
+        super().__init__("FvPy", parent)
+
+        self.main_window = main_window
+
+        self.about_action = QAction("About FvPy", self)
+        self.addAction(self.about_action)
+
+        self.addSeparator()
+
+        self.setting_action = QAction("Settings", self)
+        self.addAction(self.setting_action)
 
 
 class FileMenu(QMenu):
