@@ -15,3 +15,6 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.centralWidget)
         self.menu_bar = MenuBar(main_window=self)
         self.setMenuBar(self.menu_bar)
+        # If on macOS, the following line is needed to show the fvpy menu of the menu bar.
+        # Otherwise, the fvpy menu is hidden under the macOS application menu named python.
+        # self.menu_bar.setNativeMenuBar(False)
