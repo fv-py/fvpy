@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QAction, QMenu, QMenuBar
+from fvpy.utils import create_menu_action
 
 __all__ = ["MenuBar", "FileMenu", "ViewMenu", "FvPyMenu"]
 
@@ -51,20 +52,28 @@ class FileMenu(QMenu):
 
         self.main_window = main_window
 
-        self.new_action = QAction("New", self)
-        self.new_action.setShortcut(QKeySequence.New)
+        self.new_action = create_menu_action(self, "New", shortcut=QKeySequence.New)
         self.addAction(self.new_action)
 
-        self.open_action = QAction("Open", self)
+        open_signal = self.main_window.open_file_signal
+        self.open_action = create_menu_action(
+            self,
+            "Open",
+            shortcut=QKeySequence.Open,
+            slot=open_signal,
+            signal="triggered",
+        )
         self.addAction(self.open_action)
 
-        self.save_action = QAction("Save", self)
+        self.save_action = create_menu_action(self, "Save", shortcut=QKeySequence.Save)
         self.addAction(self.save_action)
 
-        self.save_as_action = QAction("Save As", self)
+        self.save_as_action = create_menu_action(
+            self, "Save As", shortcut=QKeySequence.SaveAs
+        )
         self.addAction(self.save_as_action)
 
-        self.exit_action = QAction("Exit", self)
+        self.exit_action = create_menu_action(self, "Exit", shortcut=QKeySequence.Quit)
         self.addAction(self.exit_action)
 
 
@@ -79,26 +88,30 @@ class ViewMenu(QMenu):
 
         self.addSeparator()
 
-        self.full_screen_action = QAction("Full Screen", self)
+        self.full_screen_action = create_menu_action(
+            self, "Full Screen", shortcut=QKeySequence.FullScreen
+        )
         self.addAction(self.full_screen_action)
 
-        self.minimize_action = QAction("Minimize", self)
+        self.minimize_action = create_menu_action(self, "Minimize")
         self.addAction(self.minimize_action)
 
-        self.maximize_action = QAction("Maximize", self)
+        self.maximize_action = create_menu_action(self, "Maximize")
         self.addAction(self.maximize_action)
 
-        self.restore_action = QAction("Restore", self)
+        self.restore_action = create_menu_action(
+            self, "Restore", shortcut=QKeySequence("Ctrl+Shift+R")
+        )
         self.addAction(self.restore_action)
 
     def appearance_menu(self):
         menu = QMenu("Appearance", self)
 
-        light_mode_action = QAction("Light Mode", self)
+        light_mode_action = create_menu_action(self, "Light Mode")
         light_mode_action.triggered.connect(self.light_mode_slot)
         menu.addAction(light_mode_action)
 
-        dark_mode_action = QAction("Dark Mode", self)
+        dark_mode_action = create_menu_action(self, "Dark Mode")
         dark_mode_action.triggered.connect(self.dark_mode_slot)
         menu.addAction(dark_mode_action)
 
