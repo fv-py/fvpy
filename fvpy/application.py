@@ -35,5 +35,5 @@ class Application(QApplication):
             self.license_window = LicenseWindow(main_window=self.new_window)
             self.license_window.exec_()
             self.new_window.setEnabled(True)
-            # config["first"] = False
-            # yaml.dump(config, open(path, "w"))
+            config["first"] = False
+            yaml.dump(config, open(path, "w"))
