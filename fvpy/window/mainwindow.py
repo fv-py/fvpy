@@ -1,8 +1,6 @@
-from astropy.table import Table
 from PyQt5.QtWidgets import QMainWindow
 from fvpy.menu import MenuBar
 from fvpy.signals import OpenFileSignal
-from .tabs import TableTabs
 
 __all__ = ["MainWindow"]
 
@@ -21,7 +19,3 @@ class MainWindow(QMainWindow):
         # If on macOS, the following line is needed to show the fvpy menu of the menu bar.
         # Otherwise, the fvpy menu is hidden under the macOS application menu named python.
         # self.menu_bar.setNativeMenuBar(False)
-        table = Table.read(
-            "/Users/mregeard/Workspace/data/gammapy-data/gammapy-datasets/dev/hess-dl3-dr1/hdu-index.fits.gz"
-        )
-        self.table_tabs = TableTabs(table, main_window=self)

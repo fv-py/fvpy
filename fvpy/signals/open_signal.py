@@ -1,4 +1,5 @@
 import os
+from astropy.table import Table
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from fvpy.backend import ReadFile
 
@@ -40,6 +41,16 @@ class OpenFileSignal:
         self.path = file_path
         if read_file.check_readable() is None:
             self.open_error()
+        else:
+            from fvpy.window import MainWindow  # Avoid circular import
+            from fvpy.window import TableTabs  # Avoid circular import
+
+            if isinstance(self.instance, MainWindow):
+                table_main_window = self.instance
+            else:
+                table_main_window = self.instance.main_window
+            table = Table(read_file.hdulist[1].data)
+            TableTabs(table, main_window=table_main_window)
 
     def open_error(self):
         self.message = QMessageBox()
