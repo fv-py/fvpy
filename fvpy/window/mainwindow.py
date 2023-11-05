@@ -8,6 +8,7 @@ __all__ = ["MainWindow"]
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.license_window = None
         self.setWindowTitle("FvPy")
         self.resize(800, 600)
 
