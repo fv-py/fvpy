@@ -1,3 +1,4 @@
 from .mainwindow import MainWindow
+from .tabs import BinTableTabs, TableTabs
 
-__all__ = ["MainWindow"]
+__all__ = ["MainWindow", "TableTabs", "BinTableTabs"]
